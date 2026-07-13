@@ -1,0 +1,44 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+eicar.com
+*.bak
+*.pcap
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+
+#Python files
+demo_file_injector.py

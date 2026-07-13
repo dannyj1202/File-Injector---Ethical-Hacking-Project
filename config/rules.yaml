@@ -1,0 +1,63 @@
+# HTTP Download Interceptor — Rule Configuration
+#
+# Each rule maps file patterns to a replacement URL.
+# Rules are evaluated top-to-bottom; first match wins.
+# The "default" block catches anything no rule matched.
+#
+# replacement_url MUST point to the EICAR test file in a real lab.
+# See: https://www.eicar.org/download-anti-malware-testfile/
+
+rules:
+  # --- Executables ---
+  - name: windows-executables
+    extensions:
+      - ".exe"
+      - ".msi"
+      - ".bat"
+      - ".cmd"
+      - ".ps1"
+      - ".scr"
+      - ".com"
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
+
+  # --- Linux packages ---
+  - name: linux-packages
+    extensions:
+      - ".deb"
+      - ".rpm"
+      - ".apk"
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
+
+  # --- Archives ---
+  - name: archives
+    extensions:
+      - ".zip"
+      - ".tar"
+      - ".gz"
+      - ".rar"
+      - ".7z"
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
+
+  # --- Documents from a specific host (example.com only) ---
+  - name: example-com-documents
+    extensions:
+      - ".pdf"
+      - ".docx"
+      - ".xlsx"
+    host_regex: ".*\\.example\\.com"
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
+
+  # --- Images on any host ---
+  - name: images
+    extensions:
+      - ".jpg"
+      - ".jpeg"
+      - ".png"
+      - ".gif"
+      - ".bmp"
+      - ".webp"
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
+
+  # --- Catch-all: redirect everything ---
+  default:
+    replacement_url: "http://192.168.1.100:8000/payloads/eicar.com"
